@@ -1,0 +1,135 @@
+.header-container {
+    margin-top: 50px;
+    margin-left: 25%;
+    font-size: 40px;
+    font-weight: 700;
+    color: aliceblue;
+    align-items: center;
+}
+
+.count-task-container {
+    margin: 40px 35%;
+    border: solid 1px white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    .title {
+        padding: 50px;
+        font-weight: 600;
+
+        .title-large {
+            font-size: 30px;
+        }
+
+        .title-small {
+            font-size: 24px;
+        }
+    }
+
+    .count {
+        border: none;
+        border-radius: 100%;
+        align-self: center;
+        margin-left: 100px;
+        padding: 40px;
+        font-size: 50px;
+        background: rgb(100, 155, 18);
+        font-weight: 400;
+    }
+}
+
+.input-task-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 17px;
+    align-items: center;
+    margin: 0 34%;
+
+    .input-task {
+        width: 490px;
+        padding: 20px 15px;
+        color: white;
+        background: #505570;
+        border: none;
+        border-radius: 10px;
+        font-size: 13px;
+    }
+
+    .button-submit {
+        border: none;
+        font-size: 34px;
+        border-radius: 15px;
+        background: rgb(100, 155, 18);
+        color: black;
+        padding: 10px;
+
+        &:hover {
+            background: rgb(144, 206, 50);
+            color: rgb(48, 48, 48);
+        }
+    }
+}
+
+.task-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    border: solid 1px white;
+    margin: 10px 35%;
+    padding: 10px 15px;
+    align-items: center;
+
+
+    .display-none {
+        display: none;
+
+        &:checked+.task-doing {
+            background: #00c500;
+        }
+    }
+
+    .task-doing {
+        border: solid 1px #00c500;
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+
+        &:hover {
+            border: solid 1px #00df00;
+        }
+
+        &.active {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background-color: #00c500;
+        }
+    }
+
+    .task-content {
+        width: 400px;
+
+        &.active {
+            text-decoration: line-through 2px;
+        }
+    }
+
+    .task-edit {
+        font-size: 30px;
+
+        &:hover {
+            color: rgb(196, 196, 196);
+        }
+    }
+
+    .task-delete {
+        font-size: 30px;
+
+        &:hover {
+            color: rgb(196, 196, 196);
+        }
+    }
+}
