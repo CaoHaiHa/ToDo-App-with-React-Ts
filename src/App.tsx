@@ -1,4 +1,3 @@
-import './App.scss'
 import Header from './components/Header'
 import ManageTask from './components/ManageTask'
 

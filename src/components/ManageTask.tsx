@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import InputTask from './InputTask'
-import Task from './Task'
+import Task from './Task/Task'
 import CountTask from './CountTask'
 
 interface ListTask {
