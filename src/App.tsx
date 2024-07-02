@@ -4,11 +4,11 @@ import ManageTask from './components/ManageTask'
 const App = () => {
 
   return (
-    <div className="app-container">
-      <div className='header'>
+    <div>
+      <div>
         <Header />
       </div>
-      <div className='body'>
+      <div>
         <ManageTask />
       </div>
     </div>
