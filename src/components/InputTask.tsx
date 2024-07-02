@@ -1,5 +1,5 @@
 import { LuPlus } from "react-icons/lu";
-import { SetStateAction, useEffect, useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import styled from 'styled-components';
 
 const InputTaskContainer = styled.div`

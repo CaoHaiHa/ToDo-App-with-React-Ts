@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import InputTask from './InputTask'
 import Task from './Task/Task'
 import CountTask from './CountTask'
@@ -23,13 +23,18 @@ const ManageTask = () => {
         setListTask(newListTask)
     }
 
-    const handleClickDeleteTask = (task: ListTask): void => {
+    const handleClickDeleteTask = (task: ListTask, index: number): void => {
         let newListTask: ListTask[] = []
         if (listTask !== undefined) {
             newListTask = [...listTask]
         }
         newListTask = newListTask.filter((item) => item.id !== task.id)
         setListTask(newListTask)
+        const newButtonPressdState = [...buttonPressedState]
+        if (newButtonPressdState[index]) {
+            newButtonPressdState.splice(index, 1)
+        }
+        setButtonPressedState(newButtonPressdState)
     }
 
     const handleButtonClick = (index: number): void => {

@@ -29,7 +29,7 @@ const TaskDoing = (props: Props) => {
     const { index, handleButtonClick, buttonPressedState } = props
 
     return (
-        <TaskDoingContainer className={`task-doing ${buttonPressedState[index] ? 'active' : ''}`}
+        <TaskDoingContainer className={`${buttonPressedState[index] ? 'active' : ''}`}
             onClick={() => handleButtonClick(index)}
         >
         </TaskDoingContainer>
