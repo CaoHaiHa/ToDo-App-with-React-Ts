@@ -1,28 +1,17 @@
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import { createGlobalStyle } from 'styled-components';
-
-const StyledRoot = createGlobalStyle`
-  :root{
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: black;
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
-  }
-`
+import { PersistGate } from 'redux-persist/integration/react'
+import { Provider } from 'react-redux'
+import { store, persistor } from './redux/store'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <>
-    <StyledRoot />
-    <App />
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
   </>
 )

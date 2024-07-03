@@ -1,5 +1,8 @@
 import { HiPencilSquare } from "react-icons/hi2";
 import styled from 'styled-components';
+import { ListTask } from "../ManageTask";
+import { useAppDispatch } from "../../redux/hook";
+import { updateTask } from "../../redux/task/task.slide";
 
 const EditButtonContainer = styled.div`
     font-size: 30px;
@@ -9,19 +12,14 @@ const EditButtonContainer = styled.div`
     }
 `;
 
-interface ListTask {
-    id: number,
-    task: string
-}
-
 interface Props {
-    handleClickEditTask: (task: ListTask) => void
     itemId: number
 }
 
 const EditButton = (props: Props) => {
 
-    const { handleClickEditTask, itemId } = props
+    const { itemId } = props
+    const dispatch = useAppDispatch()
 
     return (
         <EditButtonContainer>
@@ -30,7 +28,7 @@ const EditButton = (props: Props) => {
                     let newTaskContent: string | null = prompt('Enter new task')
                     if (newTaskContent) {
                         let newTask: ListTask = { id: itemId, task: newTaskContent }
-                        handleClickEditTask(newTask)
+                        dispatch(updateTask(newTask))
                     }
                 }}
             />

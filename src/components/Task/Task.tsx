@@ -3,33 +3,28 @@ import TaskDoing from './TaskDoing'
 import TaskContent from './TaskContent';
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
+import { useAppSelector } from '../../redux/hook';
 
 const TaskContainer = styled.div`
     display: flex;
     flex-direction: row;
     gap: 10px;
-    border: solid 1px white;
+    border: solid 1px black;
     margin: 10px 35%;
     padding: 10px 15px;
     align-items: center;
+    background: #ffd353;
 `;
 
-interface ListTask {
-    id: number,
-    task: string
-}
-
 interface Props {
-    listTask: ListTask[] | undefined,
-    handleClickDeleteTask: (task: ListTask, index: number) => void
     handleButtonClick: (index: number) => void
     buttonPressedState: boolean[]
-    handleClickEditTask: (task: ListTask) => void
 }
 
 const Task = (props: Props) => {
 
-    const { listTask, handleClickDeleteTask, handleButtonClick, buttonPressedState, handleClickEditTask } = props
+    const { handleButtonClick, buttonPressedState } = props
+    const listTask = useAppSelector(state => state.task.listTask)
 
     return (
         <div>
@@ -48,13 +43,10 @@ const Task = (props: Props) => {
                                 buttonPressedState={buttonPressedState}
                             />
                             <EditButton
-                                handleClickEditTask={handleClickEditTask}
                                 itemId={item.id}
                             />
                             <DeleteButton
-                                handleClickDeleteTask={handleClickDeleteTask}
                                 item={item}
-                                index={index}
                             />
                         </TaskContainer>
                     )

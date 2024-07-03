@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 
 const TaskDoingContainer = styled.div`
-    border: solid 1px #00c500;
+    border: solid 1px rgb(0 237 239);
     width: 30px;
     height: 30px;
     border-radius: 100%;
 
     &:hover {
-        border: solid 1px #00df00;
+        border: solid 1px rgb(194 254 255);
     }
 
     &.active {
-        width: 32px;
-        height: 32px;
+        width: 30px;
+        height: 30px;
         border: none;
-        background-color: #00c500;
+        background-color: rgb(0 237 239);
     }
 `;
 

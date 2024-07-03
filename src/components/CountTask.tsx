@@ -1,17 +1,19 @@
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { useAppSelector } from '../redux/hook';
 
 interface Props {
-    ListTaskSize: number | undefined
     buttonPressedState: boolean[]
 }
 
 const CountTaskContainer = styled.div`
     margin: 40px 35%;
-    border: solid 1px white;
+    border: solid 1px black;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
     gap: 10px;
+    background: #ffd353;
 `;
 const Title = styled.div`
     padding: 50px;
@@ -30,13 +32,14 @@ const Count = styled.div`
     margin-left: 100px;
     padding: 40px;
     font-size: 50px;
-    background: rgb(100, 155, 18);
+    background: rgb(0 237 239);
     font-weight: 400;
 `;
 
 const CountTask = (props: Props) => {
 
-    const { ListTaskSize, buttonPressedState } = props
+    const { buttonPressedState } = props
+    const listTask = useAppSelector(state => state.task.listTask)
 
     const countBoolean = () => {
         let count = 0
@@ -59,7 +62,7 @@ const CountTask = (props: Props) => {
                 </TitleSmall>
             </Title>
             <Count>
-                {countBoolean()}/{ListTaskSize ? ListTaskSize : 0}
+                {countBoolean()}/{listTask.length ? listTask.length : 0}
             </Count>
         </CountTaskContainer>
     )

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useAppSelector } from '../../redux/hook';
 
 const TaskContentContainer = styled.div`
     width: 400px;

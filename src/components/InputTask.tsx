@@ -1,6 +1,8 @@
 import { LuPlus } from "react-icons/lu";
-import { SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
+import { useAppDispatch, useAppSelector } from "../redux/hook";
+import { createTask } from "../redux/task/task.slide";
 
 const InputTaskContainer = styled.div`
     display: flex;
@@ -13,31 +15,33 @@ const InputTaskContainer = styled.div`
 const InputTaskContent = styled.input`
     width: 490px;
     padding: 20px 15px;
-    color: white;
-    background: #505570;
-    border: none;
+    color: black;
+    background: #ffd353;
+    border: solid 1px black;
     border-radius: 10px;
     font-size: 13px;
 `
 const ButtonSubmit = styled.div`
-    border: none;
+    border: solid 1px black;
     font-size: 34px;
     border-radius: 15px;
-    background: rgb(100, 155, 18);
+    background: #ffd353;
     color: black;
-    padding: 5px;
-    height: 45px;
+    padding-left: 8px;
+    height: 64px;
+    width: 50px;
+    margin-left: 11px;
 
     &:hover {
-        background: rgb(144, 206, 50);
+        background: #ffeaae;
         color: rgb(48, 48, 48);
     }
 `
 
+const InputTask = () => {
 
-const InputTask = (props: any) => {
-
-    const [submit, setSubmit] = useState<string>('')
+    const [taskContent, setTaskContent] = useState<string | undefined>()
+    const dispatch = useAppDispatch()
 
     return (
         <InputTaskContainer>
@@ -45,12 +49,14 @@ const InputTask = (props: any) => {
                 placeholder="Write your next task"
                 className='input-task'
                 type="text"
-                onChange={(event: { target: { value: SetStateAction<string>; }; }) => setSubmit(event.target.value)}
+                onChange={(event) => setTaskContent(event.target.value)}
             />
             <ButtonSubmit>
                 <LuPlus
                     className='button-submit'
-                    onClick={() => props.handleClickGetTask(submit)}
+                    onClick={() => {
+                        dispatch(createTask(taskContent))
+                    }}
                 />
             </ButtonSubmit>
         </InputTaskContainer>
