@@ -14,7 +14,7 @@ const TaskContainer = styled.div`
     margin: 10px 35%;
     padding: 10px 15px;
     align-items: center;
-    background: #ffd353;
+    background: #ffa700;
 `;
 
 const Task = () => {

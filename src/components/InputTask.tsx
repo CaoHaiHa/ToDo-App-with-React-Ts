@@ -16,7 +16,7 @@ const InputTaskContent = styled.input`
     width: 490px;
     padding: 20px 15px;
     color: black;
-    background: #ffd353;
+    background: #ffa700;
     border: solid 1px black;
     border-radius: 10px;
     font-size: 13px;
@@ -25,7 +25,7 @@ const ButtonSubmit = styled.div`
     border: solid 1px black;
     font-size: 34px;
     border-radius: 15px;
-    background: #ffd353;
+    background: #ffa700;
     color: black;
     padding-left: 8px;
     height: 64px;
@@ -33,7 +33,7 @@ const ButtonSubmit = styled.div`
     margin-left: 11px;
 
     &:hover {
-        background: #ffeaae;
+        background: #ffb72d;
         color: rgb(48, 48, 48);
     }
 `

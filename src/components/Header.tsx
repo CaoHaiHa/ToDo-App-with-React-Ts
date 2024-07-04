@@ -14,7 +14,7 @@ const HeaderContent = styled.div`
     margin-left: 25%;
     font-size: 40px;
     font-weight: 700;
-    color: #ffd353;    
+    color: #ffa700;    
 `
 
 const HeaderSwitch = styled.div`
@@ -46,7 +46,7 @@ const Header = () => {
                     defaultChecked={mode === 'light' ? false : true}
                     onChange={(e) => dispatch(changeMode(e.target.checked === true ? 'dark' : 'light'))}
                 />
-                <label className="form-check-label">Light mode</label>
+                <label className="form-check-label">{mode === "light" ? "Light mode" : "Dark mode"}</label>
             </HeaderSwitch>
         </HeaderContainer>
     )

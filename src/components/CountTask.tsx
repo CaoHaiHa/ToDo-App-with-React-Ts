@@ -9,7 +9,7 @@ const CountTaskContainer = styled.div`
     display: flex;
     flex-direction: row;
     gap: 10px;
-    background: #ffd353;
+    background: #ffa700;
 `;
 const Title = styled.div`
     padding: 50px;
