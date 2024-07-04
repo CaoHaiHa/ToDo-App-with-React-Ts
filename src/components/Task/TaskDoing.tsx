@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { useAppDispatch, useAppSelector } from '../../redux/hook';
+import { changeTaskStatus } from '../../redux/task/task.slide';
 
 const TaskDoingContainer = styled.div`
     border: solid 1px rgb(0 237 239);
@@ -20,17 +22,17 @@ const TaskDoingContainer = styled.div`
 
 interface Props {
     index: number
-    handleButtonClick: (index: number) => void
-    buttonPressedState: boolean[]
 }
 
 const TaskDoing = (props: Props) => {
 
-    const { index, handleButtonClick, buttonPressedState } = props
+    const { index } = props
+    const dispatch = useAppDispatch()
+    const listTask = useAppSelector(state => state.task.listTask)
 
     return (
-        <TaskDoingContainer className={`${buttonPressedState[index] ? 'active' : ''}`}
-            onClick={() => handleButtonClick(index)}
+        <TaskDoingContainer className={`${listTask[index].status ? 'active' : ''}`}
+            onClick={() => dispatch(changeTaskStatus(index))}
         >
         </TaskDoingContainer>
     )

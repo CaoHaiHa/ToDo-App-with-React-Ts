@@ -11,16 +11,16 @@ const TaskContentContainer = styled.div`
 
 interface Props {
     index: number
-    content: string
-    buttonPressedState: boolean[]
+    taskContent: string
 }
 
 const TaskContent = (props: Props) => {
-    const { index, content, buttonPressedState } = props
+    const { index, taskContent } = props
+    const listTask = useAppSelector(state => state.task.listTask)
 
     return (
-        <TaskContentContainer className={`task-content ${buttonPressedState[index] ? 'active' : ''}`}>
-            {content}
+        <TaskContentContainer className={`task-content ${listTask[index].status ? 'active' : ''}`}>
+            {taskContent}
         </TaskContentContainer>
     )
 }

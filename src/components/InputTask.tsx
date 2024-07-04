@@ -1,7 +1,7 @@
 import { LuPlus } from "react-icons/lu";
 import { useState } from 'react';
 import styled from 'styled-components';
-import { useAppDispatch, useAppSelector } from "../redux/hook";
+import { useAppDispatch } from "../redux/hook";
 import { createTask } from "../redux/task/task.slide";
 
 const InputTaskContainer = styled.div`
@@ -40,7 +40,7 @@ const ButtonSubmit = styled.div`
 
 const InputTask = () => {
 
-    const [taskContent, setTaskContent] = useState<string | undefined>()
+    const [content, setContent] = useState<string | undefined>()
     const dispatch = useAppDispatch()
 
     return (
@@ -49,13 +49,13 @@ const InputTask = () => {
                 placeholder="Write your next task"
                 className='input-task'
                 type="text"
-                onChange={(event) => setTaskContent(event.target.value)}
+                onChange={(event) => setContent(event.target.value)}
             />
             <ButtonSubmit>
                 <LuPlus
                     className='button-submit'
                     onClick={() => {
-                        dispatch(createTask(taskContent))
+                        dispatch(createTask(content))
                     }}
                 />
             </ButtonSubmit>

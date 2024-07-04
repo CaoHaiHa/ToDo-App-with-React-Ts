@@ -1,15 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export interface Task {
-    id: number,
-    task: string
+export interface TaskType {
+    id: number
+    content: string
+    status: boolean
 }
 
 const initialState: {
-    listTask: Task[]
+    listTask: TaskType[]
 
 } = {
-    listTask: []
+    listTask: [],
 }
 
 export const listTaskSlice = createSlice({
@@ -17,28 +18,45 @@ export const listTaskSlice = createSlice({
     initialState,
     reducers: {
         createTask(state, actions) {
-            const task = { id: state.listTask.length + 1, task: actions.payload }
+            const task = { id: state.listTask.length + 1, content: actions.payload, status: false }
             state.listTask = [...state.listTask, task]
         },
         updateTask(state, actions) {
-            const task = actions.payload
-            const newListTask = state.listTask.map((item) => {
-                if (task.id === item.id) {
-                    return task
+            const newTask = actions.payload
+            const newListTask = state.listTask.map((task) => {
+                if (newTask.id === task.id) {
+                    return newTask
                 }
                 else {
-                    return item
+                    return task
                 }
             })
             state.listTask = [...newListTask]
         },
         deleteTask(state, actions) {
-            const task = actions.payload
-            state.listTask = state.listTask.filter((item) => item.id !== task.id)
-        }
+            const newTask = actions.payload
+            const newListTask: TaskType[] = state.listTask
+            newListTask.forEach((task: TaskType, index: number) => {
+                if (task.id === newTask.id) {
+                    newListTask.splice(index, 1)
+                }
+            })
+            state.listTask = newListTask
+        },
+        changeTaskStatus(state, actions) {
+            const newListTask: TaskType[] = state.listTask.map((task: TaskType, index: number) => {
+                if (index === actions.payload) {
+                    let newTask: TaskType = { id: task.id, content: task.content, status: !task.status }
+                    return newTask
+                } else {
+                    return task
+                }
+            })
+            state.listTask = newListTask
+        },
     },
 })
 
-export const { createTask, updateTask, deleteTask } = listTaskSlice.actions
+export const { createTask, updateTask, deleteTask, changeTaskStatus } = listTaskSlice.actions
 
 export default listTaskSlice.reducer

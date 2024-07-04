@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FaRegTrashAlt } from "react-icons/fa";
 import { useAppDispatch } from '../../redux/hook';
-import { Task, deleteTask } from '../../redux/task/task.slide';
+import { TaskType, deleteTask } from '../../redux/task/task.slide';
 
 const DeleteButtonContainer = styled.div`
     font-size: 30px;
@@ -12,18 +12,20 @@ const DeleteButtonContainer = styled.div`
 `
 
 interface Props {
-    item: Task,
+    task: TaskType,
 }
 
 const DeleteButton = (props: Props) => {
 
-    const { item } = props
+    const { task } = props
     const dispatch = useAppDispatch()
 
     return (
         <DeleteButtonContainer>
             <FaRegTrashAlt
-                onClick={() => { dispatch(deleteTask(item)) }}
+                onClick={() => {
+                    dispatch(deleteTask(task))
+                }}
             />
         </DeleteButtonContainer>
     )

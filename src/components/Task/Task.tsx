@@ -4,6 +4,7 @@ import TaskContent from './TaskContent';
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
 import { useAppSelector } from '../../redux/hook';
+import { TaskType } from '../../redux/task/task.slide';
 
 const TaskContainer = styled.div`
     display: flex;
@@ -16,37 +17,27 @@ const TaskContainer = styled.div`
     background: #ffd353;
 `;
 
-interface Props {
-    handleButtonClick: (index: number) => void
-    buttonPressedState: boolean[]
-}
-
-const Task = (props: Props) => {
-
-    const { handleButtonClick, buttonPressedState } = props
-    const listTask = useAppSelector(state => state.task.listTask)
+const Task = () => {
+    const listTask: TaskType[] = useAppSelector(state => state.task.listTask)
 
     return (
         <div>
             {listTask && listTask.length > 0 &&
-                listTask.map((item, index) => {
+                listTask.map((task: TaskType, index: number) => {
                     return (
-                        <TaskContainer key={index}>
+                        <TaskContainer key={task.id}>
                             <TaskDoing
                                 index={index}
-                                handleButtonClick={handleButtonClick}
-                                buttonPressedState={buttonPressedState}
                             />
                             <TaskContent
                                 index={index}
-                                content={item.task}
-                                buttonPressedState={buttonPressedState}
+                                taskContent={task.content}
                             />
                             <EditButton
-                                itemId={item.id}
+                                task={task}
                             />
                             <DeleteButton
-                                item={item}
+                                task={task}
                             />
                         </TaskContainer>
                     )

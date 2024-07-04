@@ -6,27 +6,11 @@ import { useAppDispatch } from '../redux/hook'
 
 const ManageTask = () => {
 
-    const [buttonPressedState, setButtonPressedState] = useState<boolean[]>([]);
-    const dispatch = useAppDispatch()
-
-    const handleButtonClick = (index: number): void => {
-        setButtonPressedState(prevState => {
-            const newState = [...prevState];
-            newState[index] = !newState[index];
-            return newState;
-        })
-    };
-
     return (
         <div>
-            <CountTask
-                buttonPressedState={buttonPressedState}
-            />
+            <CountTask />
             <InputTask />
-            <Task
-                handleButtonClick={handleButtonClick}
-                buttonPressedState={buttonPressedState}
-            />
+            <Task />
         </div>
     )
 }

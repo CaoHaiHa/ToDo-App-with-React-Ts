@@ -1,10 +1,6 @@
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useAppSelector } from '../redux/hook';
-
-interface Props {
-    buttonPressedState: boolean[]
-}
+import { TaskType } from '../redux/task/task.slide';
 
 const CountTaskContainer = styled.div`
     margin: 40px 35%;
@@ -36,17 +32,13 @@ const Count = styled.div`
     font-weight: 400;
 `;
 
-const CountTask = (props: Props) => {
-
-    const { buttonPressedState } = props
-    const listTask = useAppSelector(state => state.task.listTask)
+const CountTask = () => {
+    const listTask: TaskType[] = useAppSelector(state => state.task.listTask)
 
     const countBoolean = () => {
-        let count = 0
-        let newBooleanArray = [...buttonPressedState]
-        newBooleanArray.forEach((item) => {
-            if (item === true) count++
-            return item
+        let count: number = 0
+        listTask.forEach((task: TaskType) => {
+            if (task.status === true) count++
         })
         return count
     }
